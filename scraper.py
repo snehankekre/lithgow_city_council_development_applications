@@ -40,18 +40,17 @@ def getrecord(html):
 
 
 
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 
 scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackApplicationSearchResults.aspx?Field=S&Period=L7&r=P1.WEBGUEST&f=%24P1.ETR.SEARCH.SL7'
 
 # browser
 with Browser('phantomjs', load_images=False) as browser:
   browser.visit(scrape_url)
-  #pages=browser.find_by_tag('a')
-  #for p in pages:
-  #  print p['href']
   html=browser.html
   getrecord(html)
-  browser.click_link_by_partial_href('Page$2')
-  html=browser.html
-  getrecord(html)
+  links=browser.find_link_by_partial_href('Page$2')
+  if (links.is_empty()==False):
+    browser.click_link_by_partial_href('Page$2')
+    html=browser.html
+    getrecord(html)
