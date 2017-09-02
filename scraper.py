@@ -42,19 +42,19 @@ def getrecord(html):
 
 
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackApplicationSearchResults.aspx?Field=S&Period=L7&r=P1.WEBGUEST&f=%24P1.ETR.SEARCH.SL7'
 
 ## fix data (only run these lines once)
-scraperwiki.sqlite.execute('alter table data add column date_scraped text')
-scraperwiki.sqlite.execute("update data set date_received=replace(date_received,'-','/')")
+#scraperwiki.sqlite.execute("alter table data add column date_scraped text")
+#scraperwiki.sqlite.execute("update data set date_received=replace(date_received,'-','/')")
 scraperwiki.sqlite.execute("update data set date_scraped=date_received")
-#print scraperwiki.sqlite.select('* FROM data')
+print scraperwiki.sqlite.select('* FROM data')
 
 # browser/scraper
 with Browser('phantomjs', load_images=False) as browser:
-  browser.driver.set_page_load_timeout(600)
+  browser.driver.set_page_load_timeout(300)
   try:
     browser.visit(scrape_url)
     html=browser.html
