@@ -48,7 +48,8 @@ scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackA
 
 ## fix data (only run these lines once)
 #scraperwiki.sqlite.execute("alter table data add column date_scraped text")
-#scraperwiki.sqlite.execute("update data set date_received=replace(date_received,'-','/')")
+scraperwiki.sqlite.execute("update data set date_received=replace(date_received,'/','-')")
+scraperwiki.sqlite.execute("update data set date_scraped=replace(date_scraped,'/','-')")
 #print scraperwiki.sqlite.select('* FROM data')
 #print "updating..."
 #scraperwiki.sqlite.execute("update data set date_scraped=date_received")
