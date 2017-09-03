@@ -24,7 +24,7 @@ def getrecord(html):
     record['council_reference'] = appid[index]
     record['description'] = descr[index]
     record['address'] = addr[index]
-    record['date_received'] = time.strftime('%Y-%m-%d', time.strptime(dadate[index], '%d/%m/%Y'))
+    record['date_received'] = dadate[index]
     record['info_url']=info_url + appid[index]
     record['comment_url']='mailto:council@lithgow.nsw.gov.au?subject=Development%20Application%20Enquiry%20' + appid[index]
     record['date_scraped']=date_scraped
@@ -51,9 +51,10 @@ scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackA
 scraperwiki.sqlite.execute("update data set date_received=replace(date_received,'/','-')")
 scraperwiki.sqlite.execute("update data set date_scraped=replace(date_scraped,'/','-')")
 #print scraperwiki.sqlite.select('* FROM data')
+scraperwiki.sqlite.commit() 
 #print "updating..."
 #scraperwiki.sqlite.execute("update data set date_scraped=date_received")
-#print scraperwiki.sqlite.select('* FROM data')
+
 
 # browser/scraper
 with Browser('phantomjs', load_images=False) as browser:
