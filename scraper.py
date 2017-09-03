@@ -47,17 +47,12 @@ logging.basicConfig(level=logging.INFO)
 scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackApplicationSearchResults.aspx?Field=S&Period=L7&r=P1.WEBGUEST&f=%24P1.ETR.SEARCH.SL7'
 
 ## fix data (only run these lines once)
-#scraperwiki.sqlite.execute("alter table data add column date_scraped text")
-#scraperwiki.sqlite.execute("update data set date_received=replace(date_received,'/','-')")
-#scraperwiki.sqlite.execute("update data set date_scraped=replace(date_scraped,'/','-')")
-#print scraperwiki.sqlite.select("council_reference,substr(date_received, 7, 4)||'-'||substr(date_received, 4, 2)||'-'||substr(date_received, 1, 2) FROM data where date_received like '%2017' and length(date_received)=10")
-#print scraperwiki.sqlite.select("council_reference,substr(date_received, 6, 4)||'-'||substr(date_received, 3, 2)||'-0'||substr(date_received, 1, 1) FROM data where date_received like '%2017' and length(date_received)=9")
-scraperwiki.sqlite.execute("update data set date_received=substr(date_received, 6, 4)||'-'||substr(date_received, 3, 2)||'-0'||substr(date_received, 1, 1) where date_received like '%2017' and length(date_received)=9")
-scraperwiki.sqlite.execute("update data set date_received=substr(date_received, 7, 4)||'-'||substr(date_received, 4, 2)||'-'||substr(date_received, 1, 2) where date_received like '%2017' and length(date_received)=10")
-scraperwiki.sqlite.execute("update data set date_scraped=substr(date_scraped, 6, 4)||'-'||substr(date_scraped, 3, 2)||'-0'||substr(date_scraped, 1, 1) where date_scraped like '%2017' and length(date_scraped)=9")
-scraperwiki.sqlite.execute("update data set date_scraped=substr(date_scraped, 7, 4)||'-'||substr(date_scraped, 4, 2)||'-'||substr(date_scraped, 1, 2) where date_scraped like '%2017' and length(date_scraped)=10")
-scraperwiki.sqlite.commit() 
-print scraperwiki.sqlite.select('* from data')
+#scraperwiki.sqlite.execute("update data set date_received=substr(date_received, 6, 4)||'-'||substr(date_received, 3, 2)||'-0'||substr(date_received, 1, 1) where date_received like '%2017' and length(date_received)=9")
+#scraperwiki.sqlite.execute("update data set date_received=substr(date_received, 7, 4)||'-'||substr(date_received, 4, 2)||'-'||substr(date_received, 1, 2) where date_received like '%2017' and length(date_received)=10")
+#scraperwiki.sqlite.execute("update data set date_scraped=substr(date_scraped, 6, 4)||'-'||substr(date_scraped, 3, 2)||'-0'||substr(date_scraped, 1, 1) where date_scraped like '%2017' and length(date_scraped)=9")
+#scraperwiki.sqlite.execute("update data set date_scraped=substr(date_scraped, 7, 4)||'-'||substr(date_scraped, 4, 2)||'-'||substr(date_scraped, 1, 2) where date_scraped like '%2017' and length(date_scraped)=10")
+#scraperwiki.sqlite.commit() 
+#print scraperwiki.sqlite.select('* from data')
 #scraperwiki.sqlite.execute("update data set date_scraped=date_received")
 
 
