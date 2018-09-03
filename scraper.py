@@ -15,7 +15,7 @@ from six import BytesIO
 import subprocess
 
 subprocess.check_call(["wget", "https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz"])
-subprocess.check_call(["tar", "-xvzf", "geckodriver*"])
+subprocess.check_call(["tar", "-xvzf", "geckodriver-v0.21.0-linux64.tar.gz"])
 subprocess.check_call(["chmod", "+x", "geckodriver"])
 subprocess.check_call(["sudo", "mv", "geckodriver", "/usr/local/bin"])
 
