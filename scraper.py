@@ -59,7 +59,7 @@ scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackA
 
 
 # browser/scraper
-with Browser('webdriver.firefox', load_images=False) as browser:
+with Browser('firefox', load_images=False) as browser:
   browser.driver.set_page_load_timeout(300)
   try:
     browser.visit(scrape_url)
