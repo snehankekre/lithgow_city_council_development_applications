@@ -9,3 +9,4 @@ lxml==3.4.4
 cssselect==0.9.1
 splinter>=0.7.3
 six
+selenium==3.14.0
