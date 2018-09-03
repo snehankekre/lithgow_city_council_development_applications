@@ -2,6 +2,7 @@
 # including some code snippets below that you should find helpful
 
 
+import six
 import logging
 import scraperwiki
 import sqlite3
@@ -10,6 +11,7 @@ import urllib2
 import lxml.html
 from splinter import Browser
 from selenium.common.exceptions import TimeoutException
+from six import BytesIO
 
 def getrecord(html):
   date_scraped = time.strftime('%Y-%m-%d')
