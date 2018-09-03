@@ -12,6 +12,13 @@ import lxml.html
 from splinter import Browser
 from selenium.common.exceptions import TimeoutException
 from six import BytesIO
+import subprocess
+
+subprocess.check_call(["wget", "https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz"])
+subprocess.check_call(["tar", "-xvzf", "geckodriver*"])
+subprocess.check_call(["chmod", "+x", "geckodriver"])
+subprocess.check_call(["sudo", "mv", "geckodriver", "/usr/local/bin"])
+
 
 def getrecord(html):
   date_scraped = time.strftime('%Y-%m-%d')
@@ -59,7 +66,7 @@ scrape_url='https://eservices.lithgow.nsw.gov.au/ePropertyProd/P1/eTrack/eTrackA
 
 
 # browser/scraper
-with Browser('chrome') as browser:
+with Browser() as browser:
   browser.driver.set_page_load_timeout(300)
   try:
     browser.visit(scrape_url)
